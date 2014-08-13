@@ -1,0 +1,402 @@
+{
+    "license": "http://creativecommons.org/about/cc0", 
+    "title": "Fruit,Vegetable Market Daily Prices", 
+    "collections": [
+        {
+            "prices": [
+                {
+                    "yday": 27, 
+                    "id": "LA1", 
+                    "tday": 30, 
+                    "name": "甘藍"
+                }, 
+                {
+                    "yday": 16, 
+                    "id": "LA2", 
+                    "tday": 18, 
+                    "name": "甘藍"
+                }, 
+                {
+                    "yday": 20, 
+                    "id": "LA9", 
+                    "tday": 17, 
+                    "name": "甘藍"
+                }, 
+                {
+                    "yday": 40, 
+                    "id": "LB1", 
+                    "tday": 36, 
+                    "name": "小白菜"
+                }, 
+                {
+                    "yday": 40, 
+                    "id": "LB2", 
+                    "tday": 42, 
+                    "name": "小白菜"
+                }, 
+                {
+                    "yday": 49, 
+                    "id": "LC1", 
+                    "tday": 28, 
+                    "name": "包心白菜"
+                }, 
+                {
+                    "yday": 29, 
+                    "id": "LC9", 
+                    "tday": 28, 
+                    "name": "包心白菜"
+                }, 
+                {
+                    "yday": 40, 
+                    "id": "LF2", 
+                    "tday": 25, 
+                    "name": "蕹菜"
+                }, 
+                {
+                    "yday": 53, 
+                    "id": "LG2", 
+                    "tday": 45, 
+                    "name": "芹菜"
+                }, 
+                {
+                    "yday": 49, 
+                    "id": "LI3", 
+                    "tday": 38, 
+                    "name": "萵苣菜"
+                }, 
+                {
+                    "yday": 35, 
+                    "id": "LI5", 
+                    "tday": 31, 
+                    "name": "萵苣菜"
+                }, 
+                {
+                    "yday": 82, 
+                    "id": "LI8", 
+                    "tday": 70, 
+                    "name": "萵苣菜"
+                }, 
+                {
+                    "yday": 35, 
+                    "id": "LJ4", 
+                    "tday": 34, 
+                    "name": "芥菜"
+                }, 
+                {
+                    "yday": 88, 
+                    "id": "LK2", 
+                    "tday": 75, 
+                    "name": "芥藍菜"
+                }, 
+                {
+                    "yday": 37, 
+                    "id": "LM2", 
+                    "tday": 27, 
+                    "name": "莧菜"
+                }, 
+                {
+                    "yday": 52, 
+                    "id": "LN1", 
+                    "tday": 39, 
+                    "name": "油菜"
+                }, 
+                {
+                    "yday": 29, 
+                    "id": "LO1", 
+                    "tday": 22, 
+                    "name": "甘藷葉"
+                }, 
+                {
+                    "yday": 136, 
+                    "id": "LP1", 
+                    "tday": 179, 
+                    "name": "芫荽"
+                }, 
+                {
+                    "yday": 45, 
+                    "id": "LQ1", 
+                    "tday": 42, 
+                    "name": "紅鳳菜"
+                }, 
+                {
+                    "yday": 465, 
+                    "id": "LX2", 
+                    "tday": 290, 
+                    "name": "蕨菜"
+                }
+            ], 
+            "type": "vegetable"
+        }, 
+        {
+            "prices": [
+                {
+                    "yday": 58, 
+                    "id": "FA1", 
+                    "tday": 46, 
+                    "name": "黃秋葵"
+                }, 
+                {
+                    "yday": 55, 
+                    "id": "FB1", 
+                    "tday": 43, 
+                    "name": "花椰菜"
+                }, 
+                {
+                    "yday": 18, 
+                    "id": "FC1", 
+                    "tday": 14, 
+                    "name": "胡瓜"
+                }, 
+                {
+                    "yday": 43, 
+                    "id": "FD1", 
+                    "tday": 34, 
+                    "name": "花胡瓜"
+                }, 
+                {
+                    "yday": 10, 
+                    "id": "FE1", 
+                    "tday": 9, 
+                    "name": "冬瓜"
+                }, 
+                {
+                    "yday": 28, 
+                    "id": "FF1", 
+                    "tday": 17, 
+                    "name": "絲瓜"
+                }, 
+                {
+                    "yday": 33, 
+                    "id": "FF2", 
+                    "tday": 18, 
+                    "name": "絲瓜"
+                }, 
+                {
+                    "yday": 32, 
+                    "id": "FG0", 
+                    "tday": 22, 
+                    "name": "苦瓜"
+                }, 
+                {
+                    "yday": 36, 
+                    "id": "FG1", 
+                    "tday": 24, 
+                    "name": "苦瓜"
+                }, 
+                {
+                    "yday": 17, 
+                    "id": "FH3", 
+                    "tday": 15, 
+                    "name": "扁蒲"
+                }, 
+                {
+                    "yday": 19, 
+                    "id": "FH4", 
+                    "tday": 16, 
+                    "name": "扁蒲"
+                }, 
+                {
+                    "yday": 34, 
+                    "id": "FI2", 
+                    "tday": 26, 
+                    "name": "茄子"
+                }, 
+                {
+                    "yday": 43, 
+                    "id": "FJ3", 
+                    "tday": 41, 
+                    "name": "蕃茄"
+                }, 
+                {
+                    "yday": 48, 
+                    "id": "FK4", 
+                    "tday": 54, 
+                    "name": "甜椒"
+                }, 
+                {
+                    "yday": 28, 
+                    "id": "FK5", 
+                    "tday": 26, 
+                    "name": "甜椒"
+                }, 
+                {
+                    "yday": 47, 
+                    "id": "FM2", 
+                    "tday": 43, 
+                    "name": "菜豆"
+                }, 
+                {
+                    "yday": 90, 
+                    "id": "FN1", 
+                    "tday": 72, 
+                    "name": "敏豆"
+                }, 
+                {
+                    "yday": 17, 
+                    "id": "FT1", 
+                    "tday": 16, 
+                    "name": "南瓜"
+                }, 
+                {
+                    "yday": 89, 
+                    "id": "FU2", 
+                    "tday": 63, 
+                    "name": "隼人瓜"
+                }, 
+                {
+                    "yday": 21, 
+                    "id": "FV1", 
+                    "tday": 24, 
+                    "name": "辣椒"
+                }, 
+                {
+                    "yday": 42, 
+                    "id": "FV4", 
+                    "tday": 47, 
+                    "name": "辣椒"
+                }, 
+                {
+                    "yday": 49, 
+                    "id": "FY6", 
+                    "tday": 42, 
+                    "name": "玉米"
+                }, 
+                {
+                    "yday": 44, 
+                    "id": "FY7", 
+                    "tday": 39, 
+                    "name": "玉米"
+                }
+            ], 
+            "type": "fruit"
+        }, 
+        {
+            "prices": [
+                {
+                    "yday": 20, 
+                    "id": "SA9", 
+                    "tday": 18, 
+                    "name": "蘿蔔"
+                }, 
+                {
+                    "yday": 9, 
+                    "id": "SB2", 
+                    "tday": 8, 
+                    "name": "胡蘿蔔"
+                }, 
+                {
+                    "yday": 20, 
+                    "id": "SC1", 
+                    "tday": 22, 
+                    "name": "馬鈴薯"
+                }, 
+                {
+                    "yday": 14, 
+                    "id": "SD1", 
+                    "tday": 13, 
+                    "name": "洋蔥"
+                }, 
+                {
+                    "yday": 66, 
+                    "id": "SE1", 
+                    "tday": 70, 
+                    "name": "青蔥"
+                }, 
+                {
+                    "yday": 50, 
+                    "id": "SE6", 
+                    "tday": 59, 
+                    "name": "青蔥"
+                }, 
+                {
+                    "yday": 40, 
+                    "id": "SF1", 
+                    "tday": 35, 
+                    "name": "韭菜"
+                }, 
+                {
+                    "yday": 97, 
+                    "id": "SF2", 
+                    "tday": 107, 
+                    "name": "韭菜"
+                }, 
+                {
+                    "yday": 80, 
+                    "id": "SF3", 
+                    "tday": 74, 
+                    "name": "韭菜"
+                }, 
+                {
+                    "yday": 35, 
+                    "id": "SF4", 
+                    "tday": 30, 
+                    "name": "韭菜"
+                }, 
+                {
+                    "yday": 37, 
+                    "id": "SH1", 
+                    "tday": 24, 
+                    "name": "竹筍"
+                }, 
+                {
+                    "yday": 74, 
+                    "id": "SH2", 
+                    "tday": 68, 
+                    "name": "竹筍"
+                }, 
+                {
+                    "yday": 29, 
+                    "id": "SH5", 
+                    "tday": 25, 
+                    "name": "竹筍"
+                }, 
+                {
+                    "yday": 46, 
+                    "id": "SJ2", 
+                    "tday": 43, 
+                    "name": "芋"
+                }, 
+                {
+                    "yday": 23, 
+                    "id": "SO1", 
+                    "tday": 20, 
+                    "name": "甘藷"
+                }, 
+                {
+                    "yday": 25, 
+                    "id": "SO3", 
+                    "tday": 28, 
+                    "name": "甘藷"
+                }, 
+                {
+                    "yday": 97, 
+                    "id": "SQ1", 
+                    "tday": 79, 
+                    "name": "茭白筍"
+                }, 
+                {
+                    "yday": 137, 
+                    "id": "SQ3", 
+                    "tday": 110, 
+                    "name": "茭白筍"
+                }, 
+                {
+                    "yday": 205, 
+                    "id": "SV2", 
+                    "tday": 151, 
+                    "name": "蘆筍"
+                }, 
+                {
+                    "yday": 196, 
+                    "id": "SV9", 
+                    "tday": 140, 
+                    "name": "蘆筍"
+                }
+            ], 
+            "type": "rootveg"
+        }
+    ], 
+    "time": "2014-08-13", 
+    "homepage": "https://github.com/y12studio/odtc", 
+    "desc": "Market Daily Prices Report at Taipei Market no.109"
+}
