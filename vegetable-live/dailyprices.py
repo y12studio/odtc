@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 #coding:UTF-8
+"""
+    Market Daily Prices Report at Taipei Market no.109
+    ==================================================
+    :copyright: 2014 by y12.tw
+    :license: Apache Sotware License, see LICENSE for details.
+"""
 import requests, re, json, os, collections,datetime
 os.environ['TZ'] = 'ROC'
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36', 'Content-Type': 'application/x-www-form-urlencoded','Accept-Encoding': 'gzip,deflate,sdch', 'Accept-Language': 'zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4,ja;q=0.2' }
