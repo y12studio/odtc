@@ -1,0 +1,106 @@
+<meta name="description" content="polymer core-ajax paper-slider bitcoin template" />
+
+<script src="//www.polymer-project.org/components/platform/platform.js"></script>
+
+<link rel="import" href="//www.polymer-project.org/components/polymer/polymer.html">
+<link rel="import" href="//www.polymer-project.org/components/paper-elements/paper-elements.html">
+<link rel="import" href="//www.polymer-project.org/components/core-elements/core-elements.html">
+<style>
+  body {
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+      margin: 0;
+      padding: 24px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-touch-callout: none;
+    }
+    
+  
+</style>
+<polymer-element name="bitcoin-view" attributes="resp">
+<template>
+  <style>
+      paper-slider {
+      width: 100%;
+    }
+    
+    section {
+      max-width: 1000px;
+      padding: 20px 0;
+      background-color: #f0f0f0;
+    }
+    
+    section > div {
+      padding: 14px;
+    }
+  </style>
+  <core-ajax
+    auto
+    url="https://api.bitcoinaverage.com/ticker/global/USD"
+    handleAs="json"
+    response={{resp}}></core-ajax>
+   <section>
+    <div center horizontal layout>
+      <div>USD 24h_avg</div>
+      <paper-slider value="{{resp['24h_avg']}}" max="1000" editable></paper-slider>
+    </div>
+    
+    <br>
+    <br>
+     <div center horizontal layout>
+      <div>USD ask</div>
+      <paper-slider value="{{resp.ask}}" max="1000" editable></paper-slider>
+    </div>
+    
+    <br>
+    <br>
+    
+    <div center horizontal layout>
+      <div>USD bid</div>
+      <paper-slider value="{{resp.bid}}" max="1000" editable></paper-slider>
+    </div>
+    
+    <br>
+    <br>
+    
+    <div center horizontal layout>
+      <div>USD last</div>
+      <paper-slider value="{{resp.last}}" max="1000" editable></paper-slider>
+    </div>
+    
+  </section>
+
+    
+</template>
+<script>
+Polymer('bitcoin-view', {
+  ready: function() {
+     console.log('bitcoin-view ready');
+       }
+                   
+     });
+</script>
+
+</polymer-element>
+<body unresolved>
+  
+   <core-scaffold>
+    <core-header-panel navigation flex mode="seamed">
+      <core-toolbar style="background-color: #526E9C; color: #fff;">Application</core-toolbar>
+      <core-menu>
+        <core-item icon="settings" label="item1"></core-item>
+        <core-item icon="settings" label="item2"></core-item>
+      </core-menu>
+    </core-header-panel>
+    
+    <div tool>Title</div>
+    
+    <div class="content">
+       <bitcoin-view></bitcoin-view>
+   </div>
+     <p><a href="https://bitcoinaverage.com/api">BitcoinAverage integration API</a></p>
+  </core-scaffold>
+</body>
