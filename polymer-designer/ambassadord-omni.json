@@ -1,0 +1,111 @@
+{
+	"name" : "NETWORK",
+	"children" :
+	[{
+			"name" : "HOST1",
+			"children" :
+			[{
+					"name" : "CON:AB_MYSQL",
+					"children" :
+					[{
+							"name" : "URI:AB_MYSQL_SRV"
+						}
+					]
+				}, {
+					"name" : "CON:AB_REDIS",
+					"children" :
+					[{
+							"name" : "URI:AB_REDIS_SRV"
+						}
+					]
+				}, {
+					"name" : "CON:AB_MEMCACHED",
+					"children" :
+					[{
+							"name" : "URI:AB_MEMCACHED_SRV"
+						}
+					]
+				}, {
+					"name" : "CON:WEBAPP1",
+					"children" :
+					[{
+							"name" : "LINK:AB_MSQL"
+						}, {
+							"name" : "LINK:AB_REDIS"
+						}
+					]
+				}, {
+					"name" : "CON:WEBAPP2",
+					"children" : [{
+							"name" : "LINK:AB_MSQL"
+						}, {
+							"name" : "LINK:AB_MEMCACHED"
+						}
+					]
+				}
+			]
+		}, {
+			"name" : "HOST2",
+			"children" :
+			[{
+					"name" : "CON:MYSQL_SRV"
+
+				}, {
+					"name" : "CON:REDIS_SRV"
+				}, {
+					"name" : "CON:AB_MYSQL_SRV",
+					"children" : [{
+							"name" : "LINK:MSQL_SRV"
+						}
+					]
+				}, {
+					"name" : "CON:AB_REDIS_SRV",
+					"children" : [{
+							"name" : "LINK:REDIS_SRV"
+						}
+					]
+				}
+			]
+		}, {
+			"name" : "HOST3",
+			"children" :
+			[{
+					"name" : "CON:MEMCACHED_SRV"
+				}, {
+					"name" : "CON:NGINX_SRV"
+				}, {
+					"name" : "CON:AB_MEMCACHED_SRV",
+					"children" : [{
+							"name" : "LINK:MEMCACHED_SRV"
+						}
+					]
+				}, {
+					"name" : "CON:AB_NGINX_SRV",
+					"children" : [{
+							"name" : "LINK:NGINX_SRV"
+						}
+					]
+				}
+			]
+		}, {
+			"name" : "HOST4",
+			"children" :
+			[{
+					"name" : "CON:WEBAPP3","children" :
+					[{
+							"name" : "LINK:AB_OMNI,URI:AB_MYSQL_SRV,URI:AB_MEMCACHED_SRV"
+						}
+					]
+				}, {
+					"name" : "CON:WEBAPP4","children" :
+					[{
+							"name" : "LINK:AB_OMNI,,URI:AB_MYSQL_SRV"
+						}
+					]
+				}, {
+					"name" : "CON:AB_OMNI"
+				}
+			]
+		}
+	]
+}

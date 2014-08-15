@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<meta charset=utf-8 />
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2014 by y12studio (http://jsbin.com/zidibo/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<title>Ambassadord Pattern - Docker</title>
+
+<style id="jsbin-css">
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: #f98415;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font: 12px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ededed;
+  stroke-width: 1.5px;
+}
+.tooltip {
+  font-family: sans-serif;
+  position: absolute;
+  width: 20em;
+  padding: 1em;
+  font-size: 12px;
+  background: #f8f8f8;
+  border: 1px solid #ededed;
+  border-radius: 8px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+  <div id="map"></div>
+<script>
+var root={
+	"name" : "NETWORK",
+	"children" :
+	[{
+			"name" : "HOST1",
+			"children" :
+			[{
+					"name" : "CON:AB_MYSQL",
+					"children" :
+					[{
+							"name" : "URI:AB_MYSQL_SRV"
+						}
+					]
+				}, {
+					"name" : "CON:AB_REDIS",
+					"children" :
+					[{
+							"name" : "URI:AB_REDIS_SRV"
+						}
+					]
+				}, {
+					"name" : "CON:AB_MEMCACHED",
+					"children" :
+					[{
+							"name" : "URI:AB_MEMCACHED_SRV"
+						}
+					]
+				}, {
+					"name" : "CON:WEBAPP1",
+					"children" :
+					[{
+							"name" : "LINK:AB_MSQL"
+						}, {
+							"name" : "LINK:AB_REDIS"
+						}
+					]
+				}, {
+					"name" : "CON:WEBAPP2",
+					"children" : [{
+							"name" : "LINK:AB_MSQL"
+						}, {
+							"name" : "LINK:AB_MEMCACHED"
+						}
+					]
+				}
+			]
+		}, {
+			"name" : "HOST2",
+			"children" :
+			[{
+					"name" : "CON:MYSQL_SRV"
+
+				}, {
+					"name" : "CON:REDIS_SRV"
+				}, {
+					"name" : "CON:AB_MYSQL_SRV",
+					"children" : [{
+							"name" : "LINK:MSQL_SRV"
+						}
+					]
+				}, {
+					"name" : "CON:AB_REDIS_SRV",
+					"children" : [{
+							"name" : "LINK:REDIS_SRV"
+						}
+					]
+				}
+			]
+		}, {
+			"name" : "HOST3",
+			"children" :
+			[{
+					"name" : "CON:MEMCACHED_SRV"
+				}, {
+					"name" : "CON:NGINX_SRV"
+				}, {
+					"name" : "CON:AB_MEMCACHED_SRV",
+					"children" : [{
+							"name" : "LINK:MEMCACHED_SRV"
+						}
+					]
+				}, {
+					"name" : "CON:AB_NGINX_SRV",
+					"children" : [{
+							"name" : "LINK:NGINX_SRV"
+						}
+					]
+				}
+			]
+		}, {
+			"name" : "HOST4",
+			"children" :
+			[{
+					"name" : "CON:WEBAPP3","children" :
+					[{
+							"name" : "LINK:AB_OMNI,URI:AB_MYSQL_SRV,URI:AB_MEMCACHED_SRV"
+						}
+					]
+				}, {
+					"name" : "CON:WEBAPP4","children" :
+					[{
+							"name" : "LINK:AB_OMNI,,URI:AB_MYSQL_SRV"
+						}
+					]
+				}, {
+					"name" : "CON:AB_OMNI"
+				}
+			]
+		}
+	]
+};
+
+
+
+var margin = {top: 0, right: 120, bottom: 20, left: 120},
+    width = 960 - margin.right - margin.left,
+    height = 500 - margin.top - margin.bottom;
+
+var i = 0,
+    duration = 750,
+    root;
+
+var tree = d3.layout.tree()
+.size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("#map").append("svg")
+.attr("width", width + margin.right + margin.left)
+.attr("height", height + margin.top + margin.bottom)
+.append("g")
+.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+root.x0 = height / 2;
+root.y0 = 0;
+
+function collapse(d) {
+  if (d.children) {
+    d._children = d.children;
+    d._children.forEach(collapse);
+    d.children = null;
+  }
+}
+
+//root.children.forEach(collapse);
+update(root);
+
+
+function update(source) {
+  
+  var nodes = tree.nodes(root).reverse(),
+      links = tree.links(nodes);
+  
+  nodes.forEach(function(d) { d.y = d.depth * 180; });
+  
+  var node = svg.selectAll("g.node")
+  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+  
+  var nodeEnter = node.enter().append("g")
+  .attr("class", "node")
+  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+  .on("click", click);
+  
+  nodeEnter.append("circle")
+  .attr("r", 1e-6)
+  .style("fill", function(d) { return d._children ? "#FAC492" : "#fff"; });
+  
+  nodeEnter.append("text")
+  .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
+  .attr("dy", ".35em")
+  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+  .text(function(d) { return d.name; })
+  .style("fill-opacity", 1e-6)
+  .on("mouseover", mouseover)
+  .on("mousemove", mousemove)
+  .on("mouseout", mouseout);
+  
+  var nodeUpdate = node.transition()
+  .duration(duration)
+  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+  
+  nodeUpdate.select("circle")
+  .attr("r", 4.5)
+  .style("fill", function(d) { return d._children ? "#FAC492" : "#fff"; });
+  
+  nodeUpdate.select("text")
+  .style("fill-opacity", 1);
+  
+  var nodeExit = node.exit().transition()
+  .duration(duration)
+  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+  .remove();
+  
+  nodeExit.select("circle")
+  .attr("r", 1e-6);
+  
+  nodeExit.select("text")
+  .style("fill-opacity", 1e-6);
+  
+  var link = svg.selectAll("path.link")
+  .data(links, function(d) { return d.target.id; });
+  
+  link.enter().insert("path", "g")
+  .attr("class", "link")
+  .attr("d", function(d) {
+    var o = {x: source.x0, y: source.y0};
+    return diagonal({source: o, target: o});
+  });
+  
+  link.transition()
+  .duration(duration)
+  .attr("d", diagonal);
+  
+  link.exit().transition()
+  .duration(duration)
+  .attr("d", function(d) {
+    var o = {x: source.x, y: source.y};
+    return diagonal({source: o, target: o});
+  })
+  .remove();
+  
+  nodes.forEach(function(d) {
+    d.x0 = d.x;
+    d.y0 = d.y;
+  });
+}
+
+function click(d) {
+  if (d.children) {
+    d._children = d.children;
+    d.children = null;
+  } else {
+    d.children = d._children;
+    d._children = null;
+  }
+  if (d.parent) {
+    d.parent.children.forEach(function(element) {
+      if (d !== element) {
+        collapse(element);
+      }
+    });
+  }
+  update(d);
+}
+
+var div = d3.select("body").append("div")
+.attr("class", "tooltip")
+.style("opacity", 1e-6);
+
+function mouseover(d) {
+  if (!d.children) {
+    div
+    .html('<h2>' + d.name + '</h2><p>' + d.description + '</p>')
+    .transition()
+    .duration(500)
+    .style("opacity", 1);
+  }
+}
+
+function mousemove(d) {
+  if (typeof d.description !== 'undefined') {
+    div
+    .style("left", (d3.event.pageX) + "px")
+    .style("top", (d3.event.pageY) + "px");
+  }
+}
+
+function mouseout(d) {
+  div.transition()
+  .duration(500)
+  .style("opacity", 1e-6);
+}
+</script>
+
+</body>
+</html>
