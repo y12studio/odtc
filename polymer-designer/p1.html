@@ -5,23 +5,7 @@
 <link rel="import" href="//www.polymer-project.org/components/polymer/polymer.html">
 <link rel="import" href="//www.polymer-project.org/components/paper-elements/paper-elements.html">
 <link rel="import" href="//www.polymer-project.org/components/core-elements/core-elements.html">
-
-<body unresolved>
-  
-<paper-dialog>
-  <div horizontal layout end-justified>
-    <core-icon-button icon="close" onclick="dialog.toggle()"></core-icon-button>
-  </div>
-  <div style="font-size: x-large;">Login</div><br>
-  <paper-input label="Username"></paper-input><br>
-  <paper-input label="Password" type="password"></paper-input><br>
-  <paper-button raisedButton onclick="dialog.toggle()">SUBMIT</paper-button>
-</paper-dialog>
-<paper-button label="LOGIN" raisedButton class="colored"  onclick="dialog.toggle()">
-</paper-button>
-  
-
-<style id="jsbin-css">
+<style>
  body {
     font-family: sans-serif;
   }
@@ -47,6 +31,22 @@
     }
 
 </style>
+<body unresolved>
+  
+<paper-dialog>
+  <div horizontal layout end-justified>
+    <core-icon-button icon="close" onclick="dialog.toggle()"></core-icon-button>
+  </div>
+  <div style="font-size: x-large;">Login</div><br>
+  <paper-input label="Username"></paper-input><br>
+  <paper-input label="Password" type="password"></paper-input><br>
+  <paper-button raisedButton onclick="dialog.toggle()">SUBMIT</paper-button>
+</paper-dialog>
+<paper-button label="LOGIN" raisedButton class="colored"  onclick="dialog.toggle()">
+</paper-button>
+  
+
+
 <script>
 var dialog = document.querySelector('paper-dialog');
 addEventListener('polymer-ready', function() {
