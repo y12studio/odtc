@@ -1,0 +1,36 @@
+﻿<html>
+<head>
+<meta name="description" content="polymer core-ajax paper-slider bitcoin template" />
+
+<script src="http://www.polymer-project.org/components/platform/platform.js"></script>
+
+<link rel="import" href="http://www.polymer-project.org/components/polymer/polymer.html">
+<link rel="import" href="http://www.polymer-project.org/components/paper-elements/paper-elements.html">
+<link rel="import" href="http://www.polymer-project.org/components/core-elements/core-elements.html">
+</head>
+<body>
+<polymer-element name="check-input">
+<template>
+    <style>
+    #checkbox {
+      margin-left: 1em;
+    }
+	</style>
+	<div center horizontal layout>
+		<div><paper-input floatingLabel label="{{xlabel}}" value="{{xvalue}}" disabled="{{!xenable}}" type="number" min="15" max="200"></paper-input></div>
+		<div><paper-checkbox id="checkbox" label="Enable" checked="{{xenable}}"></paper-checkbox></div>
+	</div>
+</template>
+<script>
+Polymer('check-input', {
+  publish:{xenable:true, xvalue:'',xlabel:''},
+  isInvalid: function(v) { return false; }
+});
+</script>
+</polymer-element>
+    <div>
+       <check-input xenable="true" xvalue="100" xlabel="Weight.1"></check-input>
+	   <check-input xenable="false" xvalue="185" xlabel="Weight.2"></check-input>
+   </div>
+</body>
+</html>
