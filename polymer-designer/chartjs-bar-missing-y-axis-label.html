@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta name="description" content="polymer core-scaffold paper-ripple template" />
+<script src="http://www.polymer-project.org/components/platform/platform.js"></script>
+<script src="http://www.chartjs.org/assets/Chart.min.js"></script>
+<link rel="import" href="http://www.polymer-project.org/components/polymer/polymer.html">
+<link rel="import" href="http://www.polymer-project.org/components/paper-elements/paper-elements.html">
+<link rel="import" href="http://www.polymer-project.org/components/core-elements/core-elements.html">
+</head>
+<body unresolved>
+<app-root></app-root>
+<polymer-element name="x-chart" attributes="width height foo">
+  <template>
+  <style>
+  canvas {
+  display: inline-block;
+}
+.chart-container {
+  margin: 2em;
+}
+  </style>
+  <div class="chart-container">
+    <canvas id="canvas" width="{{width}}" height="{{height}}"></canvas>
+	</div>
+  </template>
+  <script>
+    Polymer({
+    	cdata : {
+    		labels : ["8:00", "12:00", "16:00", "20;00", "0:00", "4:00", "8:00"],
+    		datasets : [{
+    				label : "Room1",
+    				fillColor : "rgba(220,220,220,0.5)",
+    				strokeColor : "rgba(220,220,220,0.8)",
+    				highlightFill : "rgba(220,220,220,0.75)",
+    				highlightStroke : "rgba(220,220,220,1)",
+    				data : [50, 100, 100, 50, 100, 50, 100]
+    			}
+    		]
+    	},
+
+    	fooChanged : function (oldVal, newVal) {
+    		console.log('foo', newVal);
+    		//this.chart.datasets[0].points[1].value = newVal;
+    		//this.chart.update();
+    		//console.log(this.chart.datasets[0]);
+    	},
+
+    	ready : function () {
+    		console.log(this.data);
+    		this.ctx = this.$.canvas.getContext('2d');
+    		this.chart = new Chart(this.ctx).Bar(this.cdata,{barShowStroke: true});
+    	}
+    });
+  </script>
+</polymer-element>
+<polymer-element name="app-root" attributes="pobj">
+<template>
+    <h1>Hello Polymer And Chartjs</h1>
+	    <x-chart width="600" height="400" foo="{{pobj.foo}}"></x-chart>
+</template>
+<script>
+  Polymer('app-root', {
+    pobj:{foo:100,data:{}},
+    ready: function() {
+	 //
+    }
+});
+</script>
+</polymer-element>
+</body>
+</html>

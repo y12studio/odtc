@@ -1,21 +1,40 @@
+<html>
+<head>
 <meta name="description" content="polymer core-scaffold paper-ripple template" />
-
 <script src="http://www.polymer-project.org/components/platform/platform.js"></script>
-
 <link rel="import" href="http://www.polymer-project.org/components/polymer/polymer.html">
 <link rel="import" href="http://www.polymer-project.org/components/paper-elements/paper-elements.html">
 <link rel="import" href="http://www.polymer-project.org/components/core-elements/core-elements.html">
-
 <style>
  html, body {
       height: 100%;
       margin: 0;
     }
-  
     body {
       font-family: sans-serif;
     }
-    
+</style>
+</head>
+<body unresolved>
+<app-root></app-root>
+<polymer-element name="x-elem" hidden attributes="data">
+<template>
+<div>{{data}}</div>
+</template>
+<script>
+  Polymer('x-elem', {
+	dataChanged:function(oldVal,newVal){
+		console.log('changed',newVal);
+	},
+    ready: function() {
+		//console.log('ready',this.globals);
+    }
+	});
+</script>
+</polymer-element>
+<polymer-element name="app-root" attributes="pobj">
+<template>
+<style>
     core-scaffold {
       position: absolute;
       top: 0;
@@ -77,16 +96,20 @@
     .fab > core-icon::shadow path {
       fill: #fff;
     }
+	.card {
+      background: white;
+      position: relative;
+      margin: 16px;
+      border-radius: 5px;
+    }
+
 </style>
-<body unresolved>
-  
  <core-scaffold>
-  
     <core-header-panel navigation flex mode="seamed">
       <core-toolbar style="background-color: #526E9C; color: #fff;">Application</core-toolbar>
       <core-menu>
-        <core-item icon="settings" label="item1"></core-item>
-        <core-item icon="settings" label="item2"></core-item>
+        <core-item icon="link" label="link"></core-item>
+        <core-item icon="settings" label="item"></core-item>
       </core-menu>
     </core-header-panel>
     
@@ -111,7 +134,26 @@
     </div>
   
   </section>
+   <section>
+    <div class="card">
+	    <paper-item icon="lock" label="FOO"></paper-item>
+        <paper-item icon="link" label="WHAT"></paper-item>
+        <paper-shadow z="1"></paper-shadow>
+      </div>
+  </section>
+  
    </div>
   
-  </core-scaffold>
+</core-scaffold>
+</template>
+<script>
+  Polymer('app-root', {
+    pobj:{foo:100,data:{}},
+    ready: function() {
+	 //
+    }
+});
+</script>
+</polymer-element>
 </body>
+</html>

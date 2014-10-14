@@ -13,3 +13,5 @@ p3.html [polymer core-ajax paper-slider bitcoin template](http://jsbin.com/vadox
 p4.html [ambassadord pattern - docker - d3 tree](http://jsbin.com/zidibo)
 
 p5.html [Data binding of states between paper elements](http://jsbin.com/boxow)
+
+p6.html [core-list core-ajax inject-param](http://jsbin.com/loyoyo)

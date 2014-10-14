@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta name="description" content="polymer core-scaffold paper-ripple template" />
+<script src="http://www.polymer-project.org/components/platform/platform.js"></script>
+<script src="http://www.chartjs.org/assets/Chart.min.js"></script>
+<link rel="import" href="http://www.polymer-project.org/components/polymer/polymer.html">
+<link rel="import" href="http://www.polymer-project.org/components/paper-elements/paper-elements.html">
+<link rel="import" href="http://www.polymer-project.org/components/core-elements/core-elements.html">
+<style>
+ html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      font-family: sans-serif;
+    }
+</style>
+</head>
+<body unresolved>
+<app-root></app-root>
+<polymer-element name="chart-line" attributes="width height foo">
+  <template>
+    <canvas id="canvas" width="{{width}}" height="{{height}}"></canvas>
+  </template>
+  <script>
+    Polymer({
+    	fooChanged : function (oldVal, newVal) {
+    		console.log('foo', newVal);
+    		this.chart.datasets[0].points[1].value = newVal;
+    		this.chart.update();
+    		console.log(this.chart.datasets[0]);
+    	},
+    	cdata : {
+    		labels : ["January", "February", "March", "April", "May", "June", "July"],
+    		datasets : [{
+    				label : "My First dataset",
+    				fillColor : "rgba(220,220,220,0.2)",
+    				strokeColor : "rgba(220,220,220,1)",
+    				pointColor : "rgba(220,220,220,1)",
+    				pointStrokeColor : "#fff",
+    				pointHighlightFill : "#fff",
+    				pointHighlightStroke : "rgba(220,220,220,1)",
+    				data : [65, 59, 80, 81, 56, 55, 40]
+    			}, {
+    				label : "My Second dataset",
+    				fillColor : "rgba(151,187,205,0.2)",
+    				strokeColor : "rgba(151,187,205,1)",
+    				pointColor : "rgba(151,187,205,1)",
+    				pointStrokeColor : "#fff",
+    				pointHighlightFill : "#fff",
+    				pointHighlightStroke : "rgba(151,187,205,1)",
+    				data : [28, 48, 40, 19, 86, 27, 90]
+    			}
+    		]
+    	},
+    	ready : function () {
+    		console.log(this.cdata);
+    		this.ctx = this.$.canvas.getContext('2d');
+    		this.chart = new Chart(this.ctx).Line(this.cdata);
+    	}
+    });
+  </script>
+</polymer-element>
+<polymer-element name="app-root" attributes="pobj">
+<template>
+   <section>
+    <div class="card">
+	    <chart-line width="600" height="300" foo="{{pobj.foo}}"></chart-line>
+        <paper-shadow z="1"></paper-shadow>
+      </div>
+  </section>
+</template>
+<script>
+  Polymer('app-root', {
+    pobj:{foo:100,data:{}},
+    ready: function() {
+	 //
+    }
+});
+</script>
+</polymer-element>
+</body>
+</html>
