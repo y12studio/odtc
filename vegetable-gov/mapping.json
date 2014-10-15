@@ -1,0 +1,20 @@
+{
+	"veg":{
+		"properties":{
+			"name":{
+				"type":"string",
+				"index":"not_analyzed"
+			},
+			"market":{
+				"type":"string",
+				"index":"not_analyzed"
+			},
+			"id":{
+				"type":"string",
+				"index":"not_analyzed"
+			}
+
+		}
+
+	}
+}

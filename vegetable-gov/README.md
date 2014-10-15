@@ -1,8 +1,25 @@
-## data
+## log
+
+Wed Oct 15 10:04:38 CST 2014
+
+```
+$ wget http://m.coa.gov.tw/OpenData/FarmTransData.aspx?EndDate=103.09.26 -O test/raw-all-103-09-26.json
+$ du -sh test/raw-all-103-09-26.json
+1.2M    test/raw-all-103-09-26.json
+$ wget 'http://m.coa.gov.tw/OpenData/FarmTransData.aspx?StartDate=103.10.14&EndDate=103.10.14' -O test/raw-all-103-10-14.json
+$ du -sh test/raw-all-103-10-14.json
+604K    test/raw-all-103-10-14.json
+----------------------------------------------------------------------
+Ran 4 tests in 0.143s
+
+OK
+```
+
+raw1.json
 
 ```
 $ wget http://m.coa.gov.tw/OpenData/FarmTransData.aspx -O raw1.json
 $ cat raw1.json
- [{ "¥æ©ö¤é´Á":"103.08.16","§@ª«¥N¸¹":"11","§@ª«¦WºÙ":"·¦¤l","¥«³õ¥N¸¹":"104","¥«³õ¦WºÙ":"¥x¥_¤G","¤W»ù":"55","¤¤»ù":"32.4","¤U»ù":"16.4","¥­§¡»ù":"33.7","¥æ©ö¶q":"825"}...
-
+ [{ "äº¤æ˜“æ—¥æœŸ":"103.08.16","ä½œç‰©ä»£è™Ÿ":"11","ä½œç‰©åç¨±":"æ¤°å­","å¸‚å ´ä»£è™Ÿ":"104","å¸‚å ´åç¨±":"å°åŒ—äºŒ",
+    "ä¸Šåƒ¹":"55","ä¸­åƒ¹":"32.4","ä¸‹åƒ¹":"16.4","å¹³å‡åƒ¹":"33.7","äº¤æ˜“é‡":"825"}...
 ```
