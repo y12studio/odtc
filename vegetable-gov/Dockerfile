@@ -7,6 +7,12 @@ WORKDIR $APP_HOME
 ADD .  $APP_HOME
 RUN pip install -r $APP_HOME/requirements.txt
 
+#
+# update kibana index json
+#
+RUN cd /opt/kibana/app/dashboards && \
+    mv -f $APP_HOME/kibana-default.json default.json
+
 EXPOSE 8080 9200
 
 CMD ["/sbin/my_init"]

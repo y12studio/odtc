@@ -60,10 +60,13 @@ def main():
         # 103-09-25 and 103-09-26
         # http://m.coa.gov.tw/OpenData/FarmTransData.aspx?EndDate=103.09.26
         # two days
-        vi.test_import('test/raw-all-103-09-25-26.json')
-        # http://m.coa.gov.tw/OpenData/FarmTransData.aspx?StartDate=103.10.14&EndDate=103.10.14
-        vi.test_import('test/raw-all-103-10-14.json')
-
+        flist = ['test/raw-all-103-09-25-26.json',
+            'test/raw-all-103-10-03.json',
+            'test/raw-all-103-10-12.json',
+            'test/raw-all-103-10-13.json',
+            'test/raw-all-103-10-14.json']
+        for f in flist:
+            vi.test_import(f)
 
 if __name__ == '__main__':
     main()
