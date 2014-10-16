@@ -1,8 +1,26 @@
 {
-  "title": "蔬菜水果農產品市價",
+  "title": "蔬果範例2:Stats",
   "services": {
     "query": {
       "list": {
+        "0": {
+          "id": 0,
+          "color": "#7EB26D",
+          "alias": "",
+          "pin": false,
+          "type": "lucene",
+          "enable": true,
+          "query": "name:\"蘋果-富士(進口)\""
+        },
+        "1": {
+          "id": 1,
+          "color": "#EAB839",
+          "alias": "",
+          "pin": false,
+          "type": "lucene",
+          "enable": true,
+          "query": "name:\"南瓜-進口\""
+        },
         "3": {
           "id": 3,
           "color": "#EF843C",
@@ -10,28 +28,18 @@
           "pin": false,
           "type": "lucene",
           "enable": true,
-          "query": "*"
+          "query": "name:\"香蕉\""
         }
       },
       "ids": [
-        3
+        3,
+        0,
+        1
       ]
     },
     "filter": {
-      "list": {
-        "0": {
-          "type": "field",
-          "field": "_type",
-          "query": "\"veg\"",
-          "mandate": "must",
-          "active": true,
-          "alias": "",
-          "id": 0
-        }
-      },
-      "ids": [
-        0
-      ]
+      "list": {},
+      "ids": []
     }
   },
   "rows": [
@@ -41,19 +49,7 @@
       "editable": true,
       "collapse": false,
       "collapsable": true,
-      "panels": [
-        {
-          "error": false,
-          "span": 12,
-          "editable": true,
-          "type": "text",
-          "loadingEditor": false,
-          "mode": "markdown",
-          "content": "[蔬果範例 1 時價](/#/dashboard/file/kibana-ex1.json) / [蔬果範例 2 統計](/#/dashboard/file/kibana-ex2.json) / [蔬果範例 3 香蕉](/#/dashboard/file/kibana-ex3.json) / [蔬果範例 4 香蕉 日期範圍](/#/dashboard/file/kibana-ex4.json)",
-          "style": {},
-          "title": "LINKS"
-        }
-      ],
+      "panels": [],
       "notice": false
     },
     {
@@ -88,46 +84,54 @@
           "queries": {
             "mode": "all",
             "ids": [
+              0,
+              1,
               3
             ]
           },
           "tmode": "terms",
           "tstat": "total",
           "valuefield": "",
-          "title": "Terms"
+          "title": "Term"
         },
         {
           "error": false,
           "span": 4,
           "editable": true,
-          "type": "terms",
+          "type": "stats",
           "loadingEditor": false,
-          "field": "market",
-          "exclude": [],
-          "missing": true,
-          "other": true,
-          "size": 20,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "bar",
-          "counter_pos": "above",
-          "spyable": true,
           "queries": {
             "mode": "all",
             "ids": [
+              0,
+              1,
               3
             ]
           },
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": "",
-          "title": "市場"
+          "style": {
+            "font-size": "24pt"
+          },
+          "format": "number",
+          "mode": "mean",
+          "display_breakdown": "yes",
+          "sort_field": "",
+          "sort_reverse": false,
+          "label_name": "Query",
+          "value_name": "Value",
+          "spyable": true,
+          "show": {
+            "count": true,
+            "min": true,
+            "max": true,
+            "mean": true,
+            "std_deviation": true,
+            "sum_of_squares": false,
+            "total": false,
+            "variance": false
+          },
+          "title": "stats",
+          "field": "price.avg",
+          "unit": "TWD/KG"
         }
       ],
       "notice": false
@@ -167,6 +171,8 @@
           "queries": {
             "mode": "all",
             "ids": [
+              0,
+              1,
               3
             ]
           },
@@ -215,13 +221,13 @@
       "query": "*",
       "pinned": true,
       "history": [
+        "name:\"香蕉\"",
+        "name:\"南瓜-進口\"",
+        "name:\"蘋果-富士(進口)\"",
         "*",
         "name:\"青蔥-北蔥\"",
-        "name:\"南瓜-進口\"",
         "name:\"包心白菜-包頭蓮\"",
         "name:\"青江白菜-小梗\"",
-        "name:\"香蕉\"",
-        "name:\"蘋果-富士(進口)\"",
         "name:\"番石榴-珍珠芭\"",
         "番石榴",
         "珍珠"

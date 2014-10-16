@@ -1,5 +1,5 @@
 {
-  "title": "蔬菜水果農產品市價",
+  "title": "香蕉市價日期範圍",
   "services": {
     "query": {
       "list": {
@@ -10,7 +10,7 @@
           "pin": false,
           "type": "lucene",
           "enable": true,
-          "query": "*"
+          "query": "date:[2014-10-01 TO 2014-10-31]"
         }
       },
       "ids": [
@@ -27,10 +27,50 @@
           "active": true,
           "alias": "",
           "id": 0
+        },
+        "1": {
+          "type": "field",
+          "field": "name",
+          "query": "\"香蕉\"",
+          "mandate": "must",
+          "active": true,
+          "alias": "",
+          "id": 1
+        },
+        "2": {
+          "type": "field",
+          "field": "market",
+          "query": "\"台中市\"",
+          "mandate": "either",
+          "active": true,
+          "alias": "",
+          "id": 2
+        },
+        "3": {
+          "type": "field",
+          "field": "market",
+          "query": "\"台北一\"",
+          "mandate": "either",
+          "active": true,
+          "alias": "",
+          "id": 3
+        },
+        "4": {
+          "type": "field",
+          "field": "market",
+          "query": "\"高雄市\"",
+          "mandate": "either",
+          "active": true,
+          "alias": "",
+          "id": 4
         }
       },
       "ids": [
-        0
+        0,
+        1,
+        2,
+        3,
+        4
       ]
     }
   },
@@ -41,19 +81,7 @@
       "editable": true,
       "collapse": false,
       "collapsable": true,
-      "panels": [
-        {
-          "error": false,
-          "span": 12,
-          "editable": true,
-          "type": "text",
-          "loadingEditor": false,
-          "mode": "markdown",
-          "content": "[蔬果範例 1 時價](/#/dashboard/file/kibana-ex1.json) / [蔬果範例 2 統計](/#/dashboard/file/kibana-ex2.json) / [蔬果範例 3 香蕉](/#/dashboard/file/kibana-ex3.json) / [蔬果範例 4 香蕉 日期範圍](/#/dashboard/file/kibana-ex4.json)",
-          "style": {},
-          "title": "LINKS"
-        }
-      ],
+      "panels": [],
       "notice": false
     },
     {
@@ -64,70 +92,77 @@
       "collapsable": true,
       "panels": [
         {
-          "error": false,
-          "span": 4,
+          "span": 6,
           "editable": true,
-          "type": "terms",
+          "type": "histogram",
           "loadingEditor": false,
-          "field": "_type",
-          "exclude": [],
-          "missing": true,
-          "other": true,
-          "size": 10,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
+          "mode": "mean",
+          "time_field": "date",
+          "value_field": "price.avg",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_format": "none",
+          "grid": {
+            "max": null,
+            "min": 0
           },
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "table",
-          "counter_pos": "above",
-          "spyable": true,
           "queries": {
             "mode": "all",
             "ids": [
               3
             ]
           },
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": "",
-          "title": "Terms"
-        },
-        {
-          "error": false,
-          "span": 4,
-          "editable": true,
-          "type": "terms",
-          "loadingEditor": false,
-          "field": "market",
-          "exclude": [],
-          "missing": true,
-          "other": true,
-          "size": 20,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "bar",
-          "counter_pos": "above",
-          "spyable": true,
-          "queries": {
-            "mode": "all",
-            "ids": [
-              3
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
             ]
           },
-          "tmode": "terms",
-          "tstat": "total",
-          "valuefield": "",
-          "title": "市場"
+          "auto_int": false,
+          "resolution": 100,
+          "interval": "1d",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "lines": true,
+          "fill": 0,
+          "linewidth": 3,
+          "points": true,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "spyable": true,
+          "zoomlinks": true,
+          "options": true,
+          "legend": true,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "derivative": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "title": "Price"
         }
       ],
       "notice": false
@@ -215,16 +250,16 @@
       "query": "*",
       "pinned": true,
       "history": [
-        "*",
-        "name:\"青蔥-北蔥\"",
-        "name:\"南瓜-進口\"",
-        "name:\"包心白菜-包頭蓮\"",
-        "name:\"青江白菜-小梗\"",
-        "name:\"香蕉\"",
-        "name:\"蘋果-富士(進口)\"",
-        "name:\"番石榴-珍珠芭\"",
-        "番石榴",
-        "珍珠"
+        "date:[2014-10-01 TO 2014-10-31]",
+        "name:香蕉",
+        "market:\"台中市\"",
+        "market:台中市",
+        "date:2014-10-01||+1M/d",
+        "date:\"2014-10-01||+1M/d\"",
+        "date:2014-10-03",
+        "date:2014-10-02",
+        "date:2014-10-01",
+        "date:2014-10"
       ],
       "remember": 10,
       "enable": true
