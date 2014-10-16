@@ -1,3 +1,30 @@
+## link
+
+* [農產品交易行情 | 政府資料開放平臺](http://data.gov.tw/node/8066)
+* [行政院農業委員會資料開放平台](http://data.coa.gov.tw/Query/ServiceDetail.aspx?id=037)
+* [歡迎光臨農產品交易行情站](http://amis.afa.gov.tw/)
+
+## parse json
+
+```
+蔬菜
+POST http://amis.afa.gov.tw/imisg1/product_find_proc.asp
+product_kind=V
+
+水果
+POST http://amis.afa.gov.tw/imisg1/product_find_proc.asp
+product_kind=T
+
+花卉
+POST http://amis.afa.gov.tw/imisg1/product_find_proc.asp
+product_kind=L
+
+$python veg-type-parse.py -t T > veg-type-t.json
+$python veg-type-parse.py -t V > veg-type-v.json
+$python veg-type-parse.py -t L > veg-type-l.json
+
+```
+
 ## log
 
 Wed Oct 15 10:04:38 CST 2014

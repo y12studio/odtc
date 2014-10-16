@@ -11,7 +11,7 @@ RUN pip install -r $APP_HOME/requirements.txt
 # update kibana index json
 #
 RUN cd /opt/kibana/app/dashboards && \
-    mv -f $APP_HOME/kibana-*.json . && \
+    mv -f $APP_HOME/kibana/kibana-*.json . && \
     mv -f kibana-default.json default.json
 
 EXPOSE 8080 9200
