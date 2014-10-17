@@ -1,5 +1,29 @@
 
-Thu Oct 16 20:22:03 CST 2014
+## Fri Oct 17 10:07:56 CST 2014
+
+remove [jpetazzo/nsenter](https://github.com/jpetazzo/nsenter)
+
+replace docker-enter to docker exec
+
+```
+$ curl -sSL https://get.docker.com/ | sudo sh
+$ sudo docker version
+Client version: 1.3.0
+Client API version: 1.15
+Go version (client): go1.3.3
+Git commit (client): c78088f
+OS/Arch (client): linux/amd64
+Server version: 1.3.0
+Server API version: 1.15
+Go version (server): go1.3.3
+Git commit (server): c78088f
+
+
+
+```
+
+
+## Thu Oct 16 20:22:03 CST 2014
 
 ```
 {

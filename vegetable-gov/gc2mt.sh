@@ -2,8 +2,7 @@
 # ------------------------------------------------------------------
 # build/run/test script
 # Ground Control to Major Tom
-# install [docker/docker](https://github.com/docker/docker)
-# install [jpetazzo/nsenter](https://github.com/jpetazzo/nsenter)
+# install [docker >= 1.3](https://github.com/docker/docker)
 # ------------------------------------------------------------------
 
 set -e
@@ -14,7 +13,7 @@ SUBJECT=veg-live-dev
 VERSION=0.1.0
 USAGE="Usage: gc2mt.sh -vhxbrstc args"
 DOCKER='sudo docker'
-DENTER='sudo docker-enter'
+DKEXEC='sudo docker exec'
 SEC_WAIT_BOOT=5
 
 # --- Option processing --------------------------------------------
@@ -50,7 +49,7 @@ function esimport {
      sleep 1
      : $((secs--))
   done
-  $DENTER $CID bash $GC2MT_HOME/gc2mt.sh -c
+  $DKEXEC $CID bash $GC2MT_HOME/gc2mt.sh -c
 }
 
 function commitimg {
